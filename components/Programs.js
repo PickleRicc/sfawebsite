@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const ProgramCard = ({ title, description, features, image, alt }) => (
-  <div className="bg-white rounded-2xl shadow-lg overflow-hidden transition-transform hover:scale-[1.02] duration-300">
+  <div className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden transition-transform hover:scale-[1.02] duration-300">
     <div className="relative h-64 w-full">
       <Image
         src={image}
@@ -13,11 +13,11 @@ const ProgramCard = ({ title, description, features, image, alt }) => (
       />
     </div>
     <div className="p-6">
-      <h3 className="text-2xl font-heading font-bold text-primary mb-4">{title}</h3>
-      <p className="text-textColor/80 mb-6">{description}</p>
+      <h3 className="text-2xl font-heading font-bold text-white mb-4">{title}</h3>
+      <p className="text-white/70 mb-6">{description}</p>
       <ul className="space-y-3 mb-6">
         {features.map((feature, index) => (
-          <li key={index} className="flex items-center text-textColor/80">
+          <li key={index} className="flex items-center text-white/70">
             <svg
               className="w-5 h-5 text-primary mr-3"
               fill="none"
@@ -84,13 +84,13 @@ const Programs = () => {
   ];
 
   return (
-    <section id="programs" className="py-20 bg-background">
+    <section id="programs" className="py-24 bg-gradient-to-br from-black to-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-primary mb-4">
+          <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">
             Our Training Programs
           </h2>
-          <p className="text-lg text-textColor/80 max-w-3xl mx-auto">
+          <p className="text-lg text-white/70 max-w-3xl mx-auto">
             Comprehensive training programs designed to enhance speed, agility, and overall
             athletic performance for young athletes.
           </p>

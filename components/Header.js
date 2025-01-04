@@ -19,7 +19,11 @@ const Header = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
-              <span className="text-3xl md:text-4xl font-heading font-bold text-primary">SpeedForce</span>
+              <span className="text-2xl md:text-3xl font-heading font-bold tracking-tight">
+                <span className="text-primary">Speed</span>
+                <span className="text-primary">Force</span>
+                <span className="text-primary ml-1">Athletics</span>
+              </span>
             </Link>
           </div>
 
