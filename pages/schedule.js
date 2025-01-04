@@ -3,10 +3,10 @@ import { useState } from 'react';
 import { getStripe } from '../utils/stripe';
 
 const PricingCard = ({ isTeam, isPopular, title, price, interval, features, onClick, isLoading }) => (
-  <div className={`bg-white/5 backdrop-blur-sm rounded-2xl p-6 relative ${isPopular ? 'border-2 border-primary' : ''}`}>
+  <div className={`bg-white/5 backdrop-blur-sm rounded-2xl p-6 ${isPopular ? 'border-2 border-primary pt-8' : ''} relative`}>
     {isPopular && (
-      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-        <span className="bg-primary text-white px-4 py-1 rounded-full text-sm font-medium">
+      <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 w-max">
+        <span className="bg-primary text-white px-6 py-1 rounded-full text-sm font-medium whitespace-nowrap">
           MOST POPULAR
         </span>
       </div>
@@ -53,7 +53,7 @@ const PricingCard = ({ isTeam, isPopular, title, price, interval, features, onCl
 const Schedule = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubscription = async (plan) => {
+  const handleSubscription = async (planId) => {
     try {
       setIsLoading(true);
       const response = await fetch('/api/create-checkout-session', {
@@ -61,7 +61,7 @@ const Schedule = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ plan }),
+        body: JSON.stringify({ planId }),
       });
 
       const { sessionId } = await response.json();
@@ -82,6 +82,7 @@ const Schedule = () => {
       title: 'Single Session',
       price: '75',
       interval: 'per session',
+      planId: 'single',
       features: [
         'No commitment required',
         'Try before you subscribe',
@@ -94,6 +95,7 @@ const Schedule = () => {
       title: 'Basic',
       price: '130',
       interval: 'per month',
+      planId: 'basic',
       features: [
         '2 sessions per month',
         '$65 per session value',
@@ -106,6 +108,7 @@ const Schedule = () => {
       title: 'Standard',
       price: '240',
       interval: 'per month',
+      planId: 'standard',
       isPopular: true,
       features: [
         '4 sessions per month',
@@ -119,6 +122,7 @@ const Schedule = () => {
       title: 'Elite',
       price: '440',
       interval: 'per month',
+      planId: 'elite',
       features: [
         '8 sessions per month (maximum)',
         '$55 per session value',
@@ -133,6 +137,7 @@ const Schedule = () => {
     title: 'Team Package',
     price: '40',
     interval: 'per athlete/session',
+    planId: 'team',
     features: [
       'Reserved time block for your team',
       '4+ athletes from same team',
@@ -191,7 +196,7 @@ const Schedule = () => {
             <div className="max-w-lg mx-auto">
               <PricingCard
                 {...teamPlan}
-                onClick={() => handleSubscription('team')}
+                onClick={() => handleSubscription(teamPlan.planId)}
                 isTeam={true}
                 isLoading={isLoading}
               />
@@ -216,7 +221,7 @@ const Schedule = () => {
                 <PricingCard
                   key={plan.title}
                   {...plan}
-                  onClick={() => handleSubscription(plan.title.toLowerCase())}
+                  onClick={() => handleSubscription(plan.planId)}
                   isLoading={isLoading}
                 />
               ))}

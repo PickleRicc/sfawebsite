@@ -33,16 +33,16 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { plan } = req.body;
+    const { planId } = req.body;
     
-    if (!PLANS[plan]) {
+    if (!PLANS[planId]) {
       return res.status(400).json({ error: 'Invalid plan selected' });
     }
 
-    const { priceId, mode } = PLANS[plan];
+    const { priceId, mode } = PLANS[planId];
 
     // Create Stripe checkout session
-    const session = await stripe.checkout.sessions.create({
+    const sessionConfig = {
       payment_method_types: ['card'],
       line_items: [
         {
@@ -58,11 +58,17 @@ export default async function handler(req, res) {
       phone_number_collection: {
         enabled: true,
       },
-      customer_creation: 'always',
       metadata: {
-        plan: plan,
+        plan: planId,
       },
-    });
+    };
+
+    // Only add customer_creation for payment mode
+    if (mode === 'payment') {
+      sessionConfig.customer_creation = 'always';
+    }
+
+    const session = await stripe.checkout.sessions.create(sessionConfig);
 
     res.status(200).json({ sessionId: session.id });
   } catch (error) {
