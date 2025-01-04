@@ -33,15 +33,15 @@ const TestimonialCard = ({ testimonial, isActive }) => (
       </svg>
       
       <div className="relative">
-        <p className="text-xl md:text-2xl text-white/80 italic mb-10 leading-relaxed">
+        <p className="text-base md:text-lg text-white/80 italic mb-8 leading-relaxed">
           "{testimonial.text}"
         </p>
         
         <footer className="mt-6">
           <div className="flex items-center">
             <div>
-              <div className="text-white text-lg font-medium">{testimonial.name}</div>
-              <div className="text-primary/80 text-base">{testimonial.role}</div>
+              <div className="text-base md:text-lg font-medium text-white">{testimonial.name}</div>
+              <div className="text-sm md:text-base text-primary/80">{testimonial.role}</div>
             </div>
           </div>
         </footer>
@@ -56,11 +56,11 @@ const Testimonials = () => {
   return (
     <section className="py-24 bg-gradient-to-br from-black to-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
             What Our Athletes Say
           </h2>
-          <p className="text-lg text-white/70 max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-white/70 max-w-2xl mx-auto">
             Hear from the athletes who have transformed their performance through our training programs.
           </p>
         </div>

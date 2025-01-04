@@ -13,8 +13,8 @@ const ProgramCard = ({ title, description, features, image, alt }) => (
       />
     </div>
     <div className="p-6">
-      <h3 className="text-2xl font-heading font-bold text-white mb-4">{title}</h3>
-      <p className="text-white/70 mb-6">{description}</p>
+      <h3 className="text-xl md:text-2xl font-heading font-bold text-white mb-4">{title}</h3>
+      <p className="text-base text-white/70 mb-6">{description}</p>
       <ul className="space-y-3 mb-6">
         {features.map((feature, index) => (
           <li key={index} className="flex items-center text-white/70">
@@ -87,10 +87,10 @@ const Programs = () => {
     <section id="programs" className="py-24 bg-gradient-to-br from-black to-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
             Our Training Programs
           </h2>
-          <p className="text-lg text-white/70 max-w-3xl mx-auto">
+          <p className="text-base md:text-lg text-white/70 max-w-3xl mx-auto">
             Comprehensive training programs designed to enhance speed, agility, and overall
             athletic performance for young athletes.
           </p>

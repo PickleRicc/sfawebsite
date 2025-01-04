@@ -1,10 +1,18 @@
 import Image from 'next/image';
 
 const AchievementCard = ({ value, label, sublabel }) => (
-  <div className="bg-white/5 backdrop-blur-sm rounded-xl p-6 text-center flex flex-col items-center justify-center">
-    <div className="text-3xl md:text-4xl font-bold text-primary mb-2 text-center">{value}</div>
-    <div className="text-lg font-medium text-white mb-1 text-center">{label}</div>
-    {sublabel && <div className="text-sm text-white/70 text-center">{sublabel}</div>}
+  <div className="bg-white/5 backdrop-blur-sm rounded-xl p-4 text-center">
+    <div className="text-2xl md:text-3xl font-heading font-bold text-primary mb-1">
+      {value}
+    </div>
+    <div className="text-sm md:text-base font-heading text-white/90">
+      {label}
+    </div>
+    {sublabel && (
+      <div className="text-sm md:text-base font-heading text-white/70">
+        {sublabel}
+      </div>
+    )}
   </div>
 );
 
@@ -19,10 +27,14 @@ const Coach = () => {
   return (
     <section id="coach" className="py-20 bg-gradient-to-br from-gray-900 to-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-heading font-bold text-white mb-4">
-            Train with an Olympic Athlete
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
+            Meet Your Coach
           </h2>
+          <p className="text-base md:text-lg text-white/70 max-w-3xl mx-auto">
+            Train with Eric Harrison Jr., an Olympic athlete and experienced coach dedicated
+            to developing the next generation of elite athletes.
+          </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-center">

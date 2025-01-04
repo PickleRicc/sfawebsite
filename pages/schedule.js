@@ -1,7 +1,147 @@
 import Head from 'next/head';
-import ScheduleLayout from '../components/ScheduleLayout';
+import { useState } from 'react';
+import { getStripe } from '../utils/stripe';
 
-export default function Schedule() {
+const PricingCard = ({ isTeam, isPopular, title, price, interval, features, onClick, isLoading }) => (
+  <div className={`bg-white/5 backdrop-blur-sm rounded-2xl p-6 relative ${isPopular ? 'border-2 border-primary' : ''}`}>
+    {isPopular && (
+      <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+        <span className="bg-primary text-white px-4 py-1 rounded-full text-sm font-medium">
+          MOST POPULAR
+        </span>
+      </div>
+    )}
+    <div className="text-center mb-6">
+      <h3 className="text-xl font-heading font-bold text-white mb-4">{title}</h3>
+      <div className="flex items-center justify-center gap-1">
+        <span className="text-4xl font-heading font-bold text-white">${price}</span>
+        <span className="text-white/70">{interval}</span>
+      </div>
+    </div>
+    <ul className="space-y-3 mb-6">
+      {features.map((feature, index) => (
+        <li key={index} className="flex items-center text-white/70">
+          <svg
+            className="w-5 h-5 text-primary mr-3 flex-shrink-0"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M5 13l4 4L19 7"
+            />
+          </svg>
+          {feature}
+        </li>
+      ))}
+    </ul>
+    <button
+      onClick={onClick}
+      disabled={isLoading}
+      className="w-full bg-primary text-white px-6 py-3 rounded-full font-heading font-semibold
+               hover:bg-primary/90 transform hover:scale-105 transition-all duration-300
+               disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      {isLoading ? 'Processing...' : 'Select Package'}
+    </button>
+  </div>
+);
+
+const Schedule = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubscription = async (plan) => {
+    try {
+      setIsLoading(true);
+      const response = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ plan }),
+      });
+
+      const { sessionId } = await response.json();
+      const stripe = await getStripe();
+      if (stripe) {
+        await stripe.redirectToCheckout({ sessionId });
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Something went wrong. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const individualPlans = [
+    {
+      title: 'Single Session',
+      price: '75',
+      interval: 'per session',
+      features: [
+        'No commitment required',
+        'Try before you subscribe',
+        'Full speed training program',
+        'Form analysis included',
+        'Progress tracking'
+      ]
+    },
+    {
+      title: 'Basic',
+      price: '130',
+      interval: 'per month',
+      features: [
+        '2 sessions per month',
+        '$65 per session value',
+        'Save $20 vs. single sessions',
+        'Full speed training program',
+        'Monthly commitment'
+      ]
+    },
+    {
+      title: 'Standard',
+      price: '240',
+      interval: 'per month',
+      isPopular: true,
+      features: [
+        '4 sessions per month',
+        '$60 per session value',
+        'Save $60 vs. single sessions',
+        'Full speed training program',
+        'Monthly commitment'
+      ]
+    },
+    {
+      title: 'Elite',
+      price: '440',
+      interval: 'per month',
+      features: [
+        '8 sessions per month (maximum)',
+        '$55 per session value',
+        'Save $160 vs. single sessions',
+        'Full speed training program',
+        'Monthly commitment'
+      ]
+    }
+  ];
+
+  const teamPlan = {
+    title: 'Team Package',
+    price: '40',
+    interval: 'per athlete/session',
+    features: [
+      'Reserved time block for your team',
+      '4+ athletes from same team',
+      'Minimum 4 sessions',
+      'Full speed training program',
+      'Team-focused environment'
+    ]
+  };
+
   return (
     <>
       <Head>
@@ -11,21 +151,92 @@ export default function Schedule() {
           content="Schedule your speed and agility training session with SpeedForce Athletics in Lakeland, Florida." 
         />
       </Head>
-      
-      <ScheduleLayout>
-        <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-5xl font-heading font-bold text-primary mb-4">
-            Schedule Your Training
-          </h1>
-          <p className="text-lg text-textColor/80 max-w-2xl mx-auto">
-            Choose your training program and schedule your session with our Olympic-level coach.
-          </p>
-        </div>
+      <div className="min-h-screen bg-gradient-to-br from-black to-gray-900 pt-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <h1 className="text-3xl md:text-4xl font-heading font-bold text-white mb-4">
+              Training Packages
+            </h1>
+            <p className="text-lg text-white/70 max-w-3xl mx-auto">
+              Choose your perfect training package and start your journey to becoming a
+              faster athlete. All packages include the same high-quality speed training
+              program.
+            </p>
+          </div>
 
-        <div className="grid gap-8">
-          {/* Subscription content will go here */}
+          {/* Free Session Banner */}
+          <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-6 mb-16 text-center">
+            <h2 className="text-xl font-heading font-bold text-green-400 mb-2">
+              First Session Free!
+            </h2>
+            <p className="text-green-300/80">
+              Try a complimentary training session to experience our program firsthand. No
+              commitment required.
+            </p>
+          </div>
+
+          {/* Team Training Section */}
+          <div className="mb-20">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-white mb-4">
+                Team Training
+              </h2>
+              <p className="text-base text-white/70 max-w-3xl mx-auto">
+                Exclusive training blocks reserved for sports teams. Perfect for building team
+                chemistry while improving speed. Every athlete receives the same comprehensive
+                speed training program.
+              </p>
+            </div>
+            <div className="max-w-lg mx-auto">
+              <PricingCard
+                {...teamPlan}
+                onClick={() => handleSubscription('team')}
+                isTeam={true}
+                isLoading={isLoading}
+              />
+            </div>
+          </div>
+
+          {/* Individual Training Section */}
+          <div>
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-white mb-4">
+                Individual Training
+              </h2>
+              <p className="text-base text-white/70 max-w-3xl mx-auto">
+                Train consistently with a monthly commitment or try a single session. All
+                sessions are first come, first served and may include 1-6 athletes training
+                together. Every session includes comprehensive speed training, form analysis,
+                and progress tracking.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {individualPlans.map((plan) => (
+                <PricingCard
+                  key={plan.title}
+                  {...plan}
+                  onClick={() => handleSubscription(plan.title.toLowerCase())}
+                  isLoading={isLoading}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Contact Section */}
+          <div className="mt-20 text-center">
+            <h2 className="text-2xl md:text-3xl font-heading font-bold text-white mb-4">
+              Contact Us
+            </h2>
+            <p className="text-base text-white/70 max-w-2xl mx-auto">
+              Ready to start your speed training journey? Contact us to discuss your goals
+              and get started with your preferred package.
+            </p>
+          </div>
         </div>
-      </ScheduleLayout>
+      </div>
     </>
   );
-}
+};
+
+export default Schedule;

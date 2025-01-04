@@ -22,32 +22,32 @@ const Hero = () => {
       <div className="relative h-full flex items-center justify-center">
         <div className="text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
           <div className="space-y-6">
-            <h1 className="flex flex-col items-center gap-4">
-              <span className="text-5xl sm:text-6xl md:text-7xl font-heading font-extrabold 
+            <h1 className="flex flex-col items-center gap-3">
+              <span className="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold 
                              tracking-tight leading-none text-white/95">
                 TRAIN LIKE AN
               </span>
-              <span className="text-5xl sm:text-6xl md:text-7xl font-heading font-extrabold 
+              <span className="text-4xl sm:text-5xl md:text-6xl font-heading font-extrabold 
                              tracking-tight leading-none text-primary">
                 OLYMPIC ATHLETE
               </span>
-              <span className="text-2xl sm:text-3xl md:text-4xl font-heading tracking-wide 
+              <span className="text-xl sm:text-2xl md:text-3xl font-heading tracking-wide 
                              text-white/80 mt-2">
                 IN LAKELAND FLORIDA
               </span>
             </h1>
             
-            <p className="text-xl sm:text-2xl md:text-3xl font-heading font-medium 
+            <p className="text-lg sm:text-xl md:text-2xl font-heading font-medium 
                          text-white/70 tracking-wide max-w-3xl mx-auto mt-8">
               Elite speed training with an Olympic Sprinter
             </p>
 
-            <div className="mt-10">
+            <div className="mt-8">
               <Link
                 href="/schedule"
-                className="inline-block bg-primary text-white px-8 py-4 rounded-full text-lg font-heading font-bold
+                className="inline-block bg-primary text-white px-6 py-3 rounded-full text-base font-heading font-bold
                          hover:bg-primary/90 transform hover:scale-105 transition-all duration-300 
-                         shadow-md"
+                         shadow-lg hover:shadow-xl tracking-wide"
               >
                 START TRAINING TODAY
               </Link>
