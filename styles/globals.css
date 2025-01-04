@@ -1,0 +1,41 @@
+@import './colors.css';
+@import './typography.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-background text-textColor font-sans antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading text-primary font-bold;
+  }
+  h1 { @apply text-4xl md:text-5xl; }
+  h2 { @apply text-3xl md:text-4xl; }
+  h3 { @apply text-2xl md:text-3xl; }
+  h4 { @apply text-xl md:text-2xl; }
+  h5 { @apply text-lg md:text-xl; }
+  h6 { @apply text-base md:text-lg; }
+  
+  p { @apply text-base leading-relaxed; }
+  
+  a {
+    @apply text-primary hover:text-primary/80 transition-colors;
+  }
+  button {
+    @apply bg-primary text-white hover:bg-primary/90 transition-colors font-heading;
+  }
+}

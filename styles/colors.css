@@ -1,0 +1,21 @@
+:root {
+  /* Main Colors */
+  --color-primary: #007BFF;
+  --color-accent: #FF5733;
+  --color-background: #F8F9FA;
+  --color-text: #343A40;
+  --color-secondary: #28A745;
+
+  /* Variations for hover states and opacity */
+  --color-primary-hover: #0056b3;
+  --color-accent-hover: #ff3d00;
+  --color-secondary-hover: #218838;
+  
+  /* Background variations */
+  --color-background-dark: #e9ecef;
+  --color-background-light: #ffffff;
+  
+  /* Text variations */
+  --color-text-light: #6c757d;
+  --color-text-lighter: #adb5bd;
+}
