@@ -6,6 +6,24 @@ const Gallery = () => {
 
   const images = [
     {
+      src: '/images/speed-training-session-1.jpg',
+      alt: 'Speed training session with athletes',
+      width: 800,
+      height: 600
+    },
+    {
+      src: '/images/speed-training-session-2.jpg',
+      alt: 'Athletes practicing speed drills',
+      width: 800,
+      height: 600
+    },
+    {
+      src: '/images/speed-training-session-3.jpg',
+      alt: 'Professional speed training session',
+      width: 800,
+      height: 600
+    },
+    {
       src: '/images/gallery3.jpg',
       alt: 'Speed training session',
       width: 800,

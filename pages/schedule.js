@@ -150,11 +150,21 @@ const Schedule = () => {
   return (
     <>
       <Head>
-        <title>Schedule Training | SpeedForce Athletics</title>
+        <title>Training Packages & Pricing | SpeedForce Athletics Lakeland</title>
         <meta 
           name="description" 
-          content="Schedule your speed and agility training session with SpeedForce Athletics in Lakeland, Florida." 
+          content="Choose from our flexible speed training packages in Lakeland, FL. Individual sessions, monthly plans, and team training available. First session free!" 
         />
+        <meta name="keywords" content="speed training packages, athletic training pricing, Lakeland FL, individual training, team training, youth sports training" />
+        <meta property="og:title" content="Training Packages & Pricing | SpeedForce Athletics Lakeland" />
+        <meta property="og:description" content="Choose from our flexible speed training packages in Lakeland, FL. Individual sessions, monthly plans, and team training available. First session free!" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/images/training-session.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Training Packages & Pricing | SpeedForce Athletics" />
+        <meta name="twitter:description" content="Choose from our flexible speed training packages in Lakeland, FL." />
+        <meta name="twitter:image" content="/images/training-session.jpg" />
+        <link rel="canonical" href="https://www.speedforceathletics.com/schedule" />
       </Head>
       <div className="min-h-screen bg-gradient-to-br from-black to-gray-900 pt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -173,12 +183,35 @@ const Schedule = () => {
           {/* Free Session Banner */}
           <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-6 mb-16 text-center">
             <h2 className="text-xl font-heading font-bold text-green-400 mb-2">
-              First Session Free!
+              First Session Free! Our Gift to You
             </h2>
             <p className="text-green-300/80">
               Try a complimentary training session to experience our program firsthand. No
               commitment required.
             </p>
+          </div>
+
+          {/* Individual Training Section */}
+          <div className="mb-20">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-white mb-4">
+                Individual Training
+              </h2>
+              <p className="text-base text-white/70 max-w-3xl mx-auto">
+                Choose the package that best fits your training needs. All packages include
+                the same comprehensive speed training program.
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {individualPlans.map((plan, index) => (
+                <PricingCard
+                  key={index}
+                  {...plan}
+                  onClick={() => handleSubscription(plan.planId)}
+                  isLoading={isLoading}
+                />
+              ))}
+            </div>
           </div>
 
           {/* Team Training Section */}
@@ -200,31 +233,6 @@ const Schedule = () => {
                 isTeam={true}
                 isLoading={isLoading}
               />
-            </div>
-          </div>
-
-          {/* Individual Training Section */}
-          <div>
-            <div className="text-center mb-8">
-              <h2 className="text-2xl md:text-3xl font-heading font-bold text-white mb-4">
-                Individual Training
-              </h2>
-              <p className="text-base text-white/70 max-w-3xl mx-auto">
-                Train consistently with a monthly commitment or try a single session. All
-                sessions are first come, first served and may include 1-6 athletes training
-                together. Every session includes comprehensive speed training, form analysis,
-                and progress tracking.
-              </p>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {individualPlans.map((plan) => (
-                <PricingCard
-                  key={plan.title}
-                  {...plan}
-                  onClick={() => handleSubscription(plan.planId)}
-                  isLoading={isLoading}
-                />
-              ))}
             </div>
           </div>
 

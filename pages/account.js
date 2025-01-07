@@ -6,11 +6,16 @@ export default function Account() {
   return (
     <>
       <Head>
-        <title>My Account - SpeedForce Athletics</title>
+        <title>My Account | SpeedForce Athletics</title>
         <meta 
           name="description" 
-          content="Manage your SpeedForce Athletics training subscription" 
+          content="Manage your SpeedForce Athletics training subscription. Access billing information, update payment details, and view training schedule." 
         />
+        <meta name="robots" content="noindex, nofollow" />
+        <meta property="og:title" content="My Account | SpeedForce Athletics" />
+        <meta property="og:description" content="Manage your SpeedForce Athletics training subscription and account details." />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://www.speedforceathletics.com/account" />
       </Head>
 
       <div className="min-h-screen bg-gradient-to-br from-black to-gray-900 pt-24">

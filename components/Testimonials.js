@@ -2,15 +2,15 @@ import { useState } from 'react';
 
 const testimonials = [
   {
-    name: "Michael Johnson",
-    role: "High School Athlete",
-    text: "Training with Coach Eric has been transformative. My 100m time improved by 0.5 seconds in just three months!",
+    name: "Demi Wall",
+    role: "Parent",
+    text: "Eric has been training both our boys (ages 16 & 14) since the summer of 2024. He is very professional, kind and knowledgeable when it comes to speed training. The boys look up to him and respect him because he's a professional athlete who competed in college and in their words because \"he's fast!\" He definitely knows what he's doing when it comes to their form as well as conditioning/exercise. This past football season (and currently in soccer season) we noticed a big difference of how fast the boys were since last season. Others noticed it and commented to us as well. What better person to receive speed training from than an All American Big 10 college athlete and a 2020 Tokyo Olympian! Thanks Eric for all you have done and continue to do to help our boys achieve their speed goals.",
     image: "/images/testimonial1.jpg"
   },
   {
-    name: "Sarah Williams",
-    role: "Track Athlete",
-    text: "The specialized sprint mechanics training has completely changed my running form. I'm more confident than ever on the track.",
+    name: "Bryce Benton",
+    role: "Baseball Player Jackson State",
+    text: "Working with Eric was extremely helpful and beneficial! He was able to help me get my time down and be more consistent with my mechanics. He was able to explain it and break it down into something that was easy to understand, while making sure I get the full benefit of the form and the workout. Also he is a relatable down to earth guy and a great coach that will push you to be better. If you want to improve your speed or form in anyway he is the guy to go to!",
     image: "/images/testimonial2.jpg"
   },
   {

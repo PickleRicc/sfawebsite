@@ -24,11 +24,16 @@ export default function Success() {
   return (
     <>
       <Head>
-        <title>Payment Successful - SpeedForce Athletics</title>
+        <title>Payment Successful | SpeedForce Athletics</title>
         <meta 
           name="description" 
-          content="Thank you for your payment. Your speed training journey begins now!" 
+          content="Thank you for choosing SpeedForce Athletics. Your speed training journey in Lakeland, FL begins now! We'll be in touch shortly with next steps." 
         />
+        <meta name="robots" content="noindex, follow" />
+        <meta property="og:title" content="Payment Successful | SpeedForce Athletics" />
+        <meta property="og:description" content="Thank you for choosing SpeedForce Athletics. Your speed training journey in Lakeland, FL begins now!" />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://www.speedforceathletics.com/success" />
       </Head>
 
       <div className="min-h-screen bg-gradient-to-br from-black to-gray-900 pt-24">
