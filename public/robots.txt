@@ -1,0 +1,9 @@
+# https://www.speedforceathletics.com/robots.txt
+User-agent: *
+Allow: /
+Allow: /schedule
+Disallow: /success
+Disallow: /account
+
+# Sitemaps
+Sitemap: https://www.speedforceathletics.com/sitemap.xml

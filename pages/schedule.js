@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import { useState } from 'react';
 import { getStripe } from '../utils/stripe';
+import Link from 'next/link';
 
 const PricingCard = ({ isTeam, isPopular, title, price, interval, features, onClick, isLoading }) => (
   <div className={`bg-white/5 backdrop-blur-sm rounded-2xl p-6 ${isPopular ? 'border-2 border-primary pt-8' : ''} relative`}>
@@ -165,8 +166,49 @@ const Schedule = () => {
         <meta name="twitter:description" content="Choose from our flexible speed training packages in Lakeland, FL." />
         <meta name="twitter:image" content="/images/training-session.jpg" />
         <link rel="canonical" href="https://www.speedforceathletics.com/schedule" />
+
+        {/* Breadcrumb Structured Data */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://www.speedforceathletics.com"
+                },
+                {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Training Packages",
+                  "item": "https://www.speedforceathletics.com/schedule"
+                }
+              ]
+            })
+          }}
+        />
       </Head>
       <div className="min-h-screen bg-gradient-to-br from-black to-gray-900 pt-24">
+        {/* Breadcrumb Navigation */}
+        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <ol className="flex items-center space-x-2 text-sm text-white/60">
+            <li>
+              <Link href="/" className="hover:text-white transition-colors">
+                Home
+              </Link>
+            </li>
+            <li>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </li>
+            <li className="text-white">Training Packages</li>
+          </ol>
+        </nav>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           {/* Header */}
           <div className="text-center mb-16">
