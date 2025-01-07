@@ -19,11 +19,14 @@ export default function Home() {
         <meta property="og:title" content="SpeedForce Athletics - Elite Speed Training in Lakeland, FL" />
         <meta property="og:description" content="Elite speed training program in Lakeland, FL with Olympic athlete Eric Harrison Jr. Improve your speed, agility, and athletic performance with professional training." />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="/images/coach-1.jpg" />
+        <meta property="og:image" content="https://www.speedforceathletics.com/images/speedforce-logo-share.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="SpeedForce Athletics Logo" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="SpeedForce Athletics - Elite Speed Training" />
         <meta name="twitter:description" content="Elite speed training program in Lakeland, FL with Olympic athlete Eric Harrison Jr." />
-        <meta name="twitter:image" content="/images/coach-1.jpg" />
+        <meta name="twitter:image" content="https://www.speedforceathletics.com/images/speedforce-logo-share.png" />
         <link rel="canonical" href="https://www.speedforceathletics.com" />
         
         {/* Structured Data for Local Business */}

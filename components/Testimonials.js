@@ -53,6 +53,18 @@ const TestimonialCard = ({ testimonial, isActive }) => (
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const handlePrevious = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === 0 ? testimonials.length - 1 : prevIndex - 1
+    );
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => 
+      prevIndex === testimonials.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
   return (
     <section className="py-24 bg-gradient-to-br from-black to-gray-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -66,6 +78,28 @@ const Testimonials = () => {
         </div>
 
         <div className="relative max-w-5xl mx-auto">
+          {/* Previous Button */}
+          <button
+            onClick={handlePrevious}
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 text-white/60 hover:text-white transition-colors"
+            aria-label="Previous testimonial"
+          >
+            <svg
+              className="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M15 19l-7-7 7-7"
+              />
+            </svg>
+          </button>
+
           <div className="relative min-h-[400px]">
             {testimonials.map((testimonial, index) => (
               <TestimonialCard
@@ -75,6 +109,28 @@ const Testimonials = () => {
               />
             ))}
           </div>
+
+          {/* Next Button */}
+          <button
+            onClick={handleNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 text-white/60 hover:text-white transition-colors"
+            aria-label="Next testimonial"
+          >
+            <svg
+              className="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </button>
 
           {/* Navigation Dots */}
           <div className="flex justify-center space-x-3 mt-10">
