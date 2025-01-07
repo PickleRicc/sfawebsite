@@ -97,7 +97,7 @@ const Coach = () => {
             </p>
 
             <p className="text-lg text-white/70 leading-relaxed">
-              An 8x Big Ten Champion and NCAA All-American, Eric's achievements include 
+              An 10x Big Ten Champion and NCAA All-American, Eric's achievements include 
               medals at the 2018 World U20 Championships and 2022 Commonwealth Games, 
               along with representing Trinidad and Tobago at the 2020 Tokyo Olympics.
             </p>
